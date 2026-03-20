@@ -26,7 +26,7 @@
       font-size: 50px;
       font-weight: bold;
       color: #e74c3c;
-      opacity: 0; /* inicial invisible */
+      opacity: 0;
       margin-top: 20px;
     }
   </style>
@@ -34,14 +34,13 @@
 <body>
 
   <div id="heart">❤️</div>
-  <div id="name">Ali</div>
+  <div id="name">MINAS</div>
 
   <script>
     const heart = document.getElementById("heart");
     const name = document.getElementById("name");
 
     heart.addEventListener("click", () => {
-      // Animación del corazón desapareciendo
       gsap.to(heart, {
         duration: 1,
         opacity: 0,
@@ -52,7 +51,6 @@
         onComplete: () => {
           heart.style.display = "none";
 
-          // Aparece el nombre
           gsap.fromTo(name, 
             {opacity: 0, y: 50, scale: 0.5}, 
             {opacity: 1, y: 0, scale: 1, duration: 1.5, ease: "elastic.out(1, 0.5)"}
