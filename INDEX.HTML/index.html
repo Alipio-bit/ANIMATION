@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Corazón y Nombre</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff0f5;
+      flex-direction: column;
+    }
+
+    #heart {
+      font-size: 100px;
+      cursor: pointer;
+      opacity: 1;
+      user-select: none;
+    }
+
+    #name {
+      font-size: 50px;
+      font-weight: bold;
+      color: #e74c3c;
+      opacity: 0; /* inicial invisible */
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="heart">❤️</div>
+  <div id="name">Ali</div>
+
+  <script>
+    const heart = document.getElementById("heart");
+    const name = document.getElementById("name");
+
+    heart.addEventListener("click", () => {
+      // Animación del corazón desapareciendo
+      gsap.to(heart, {
+        duration: 1,
+        opacity: 0,
+        scale: 0.5,
+        rotation: 20,
+        y: -100,
+        ease: "power2.inOut",
+        onComplete: () => {
+          heart.style.display = "none";
+
+          // Aparece el nombre
+          gsap.fromTo(name, 
+            {opacity: 0, y: 50, scale: 0.5}, 
+            {opacity: 1, y: 0, scale: 1, duration: 1.5, ease: "elastic.out(1, 0.5)"}
+          );
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
